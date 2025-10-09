@@ -19,9 +19,11 @@ class Users:
     async def ReceiveMsg(self, name, message: dict):
         print('skibidi')
 
+
 @app.post('/messages')
-def createUser(name: str, password: str):
-    userList.append(Users(name, password))
+def createUser(user: dict):
+    userList.append(Users(user["name"], user["password"]))
+    return userList
 
 
 if __name__ == "__main__":
