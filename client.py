@@ -1,18 +1,15 @@
 import requests
 
-API_URL = "http://10.74.65.115"
+API_URL = "http://10.74.65.115:8000"
 
 def opret_bruger():
     print("=== Opret ny bruger ===")
-    brugernavn = input("Brugernavn: ")
-
-    data = {
-        "username": brugernavn,
-    }
+    name = input("name: ")
+    password = input("password:")
 
     try:
-        response = requests.post(API_URL, json=data)
-        if response.status_code == 201:
+        response = requests.post((f"{API_URL}/messages", name, password))
+        if response.status_code == 200:
             print("Bruger oprettet!")
         else:
             print(f"Fejl: {response.status_code} - {response.text}")
