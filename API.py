@@ -1,28 +1,29 @@
 from fastapi import FastAPI
 
+
 app = FastAPI()
 
 userList = []
 
-messageList = []
+messages = [
+    {}
+]
+
+
 
 class Users:
-    def __init__(self, name):
+    def __init__(self, name, password):
         self.name = name
+        self.password = password
     
-    def createUser(name):
-        userList.append(Users(name))
+    async def ReceiveMsg(self, name, message: dict):
+        print('skibidi')
 
 
-
-
-
-
-
-
-
-
-
+@app.post('/messages')
+def createUser(user: dict):
+    userList.append(Users(user["name"], user["password"]))
+    return userList
 
 
 if __name__ == "__main__":
