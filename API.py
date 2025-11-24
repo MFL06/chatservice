@@ -27,6 +27,11 @@ async def save_userlist(user):
     with open('users.json','w') as file:
         json.dump(user, file)
 
+@app.post('/send_message')
+async def send_message(user1: dict, user2: dict, message: str):
+    with open(f'message_{user1['name']}_{user2['name']}','w') as file:
+        json.dump(message, file)
+
 
 if __name__ == "__main__":
     import uvicorn; from pathlib import Path
