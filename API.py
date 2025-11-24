@@ -16,7 +16,7 @@ class Users:
         self.password = password
 
 
-@app.post('/messages')
+@app.post('/sign up')
 async def createUser(user: dict):
     userList.append(Users(user["name"], user["password"]))
     await save_userlist(user)

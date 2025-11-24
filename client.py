@@ -8,7 +8,7 @@ def opret_bruger():
     password = input("password:")
 
     try:
-        response = requests.post(f"{API_URL}/messages", json={"name": name, "password": password})
+        response = requests.post(f"{API_URL}/sign up", json={"name": name, "password": password})
         if response.status_code == 200:
             print("Bruger oprettet!",response.text)
         else:
