@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-import csv
+import json
 
 app = FastAPI()
 
@@ -10,25 +10,22 @@ messages = [
 ]
 
 
-
 class Users:
     def __init__(self, name, password):
         self.name = name
         self.password = password
-    
-    async def ReceiveMsg(self, name, message: dict):
-        print('skibidi')
 
 
 @app.post('/messages')
-def createUser(user: dict):
+async def createUser(user: dict):
     userList.append(Users(user["name"], user["password"]))
-    save_userlist(user)
+    await save_userlist(user)
+    return user
 
-def save_userlist(user):
-    with open('data.csv','w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(user)
+
+async def save_userlist(user):
+    with open('users.json','w') as file:
+        json.dump(user, file)
 
 
 if __name__ == "__main__":
