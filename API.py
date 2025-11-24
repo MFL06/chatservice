@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+import csv
 
 app = FastAPI()
 
@@ -23,7 +23,12 @@ class Users:
 @app.post('/messages')
 def createUser(user: dict):
     userList.append(Users(user["name"], user["password"]))
-    return userList
+    save_userlist(user)
+
+def save_userlist(user):
+    with open('data.csv','w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(user)
 
 
 if __name__ == "__main__":
