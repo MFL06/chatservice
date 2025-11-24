@@ -1,6 +1,6 @@
 import requests
 
-API_URL = "http://10.146.100.242"
+API_URL = "http://10.74.68.175"
 
 def opret_bruger():
     print("=== Opret ny bruger ===")
