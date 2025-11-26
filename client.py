@@ -37,6 +37,7 @@ if __name__ == "__main__":
 
 
 
+    
 def send_message():
     print("=== Send en besked ===")
     message = input("message: ")
@@ -50,4 +51,6 @@ def send_message():
             print(f"Fejl: {response.status_code} - {response.text}")
     except requests.exceptions.RequestException as e:
         print("Kunne ikke forbinde til serveren:", e)
-            
+
+if user_name != False:
+    send_message()
