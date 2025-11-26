@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import json
+import pathlib
 
 app = FastAPI()
 
@@ -36,7 +37,16 @@ async def send_message(message: dict):
 
 @app.get('/recieve_message')
 async def recieve_message(dic: dict):
-    for 
+    directory = pathlib.Path('/beskeder')
+    for item in directory.iterdir():
+        file = open(str(item), 'r')
+        content = file.read()
+        if content['reciever'] == dic['reciever'] and content['sender'] == dic['sender']:
+            return content['message']
+        else:
+            return None
+
+
 
 
 if __name__ == "__main__":
