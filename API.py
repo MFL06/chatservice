@@ -24,12 +24,13 @@ async def createUser(user: dict):
 
 
 async def save_userlist(user):
-    with open('users.json','w') as file:
+    with open(f'user_{user['name']}.json','w') as file:
         json.dump(user, file)
 
+
 @app.post('/send_message')
-async def send_message(user1: dict, user2: dict, message: str):
-    with open(f'message_{user1['name']}_{user2['name']}','w') as file:
+async def send_message(message: dict):
+    with open(f'message_{message['sender']}_{message['reciever']}','w') as file:
         json.dump(message, file)
 
 
