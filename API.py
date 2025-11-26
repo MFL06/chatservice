@@ -33,6 +33,7 @@ async def save_userlist(user):
 async def send_message(message: dict):
     with open(f'message_{message['sender']}_{message['reciever']}','w') as file:
         json.dump(message['message'], file)
+        return 'Message sent successfully'
 
 
 @app.get('/recieve_message')
@@ -45,8 +46,6 @@ async def recieve_message(dic: dict):
             return content['message']
         else:
             return None
-
-
 
 
 if __name__ == "__main__":
