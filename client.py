@@ -36,18 +36,21 @@ if __name__ == "__main__":
         print("Password:", bruger.password)
 
 
+
+    
+def send_message():
+    print("=== Send en besked ===")
+    message = input("message: ")
+    reciever = input("modtager: ")
+    
+    try:
+        response = requests.post(f"{API_URL}/send_message", json={f'message': message, 'reciever': reciever, 'sender':user_name})
+        if response.status_code == 200:
+            print("Besked sendt", response.text)
+        else:
+            print(f"Fejl: {response.status_code} - {response.text}")
+    except requests.exceptions.RequestException as e:
+        print("Kunne ikke forbinde til serveren:", e)
+
 if user_name != False:
-    def send_message():
-        print("=== Send en besked ===")
-        message = input("message: ")
-        reciever = input("modtager: ")
-        
-        try:
-            response = requests.post(f"{API_URL}/send_message", json={f'message': message, 'reciever': reciever, 'sender':user_name})
-            if response.status_code == 200:
-                print("Besked sendt", response.text)
-            else:
-                print(f"Fejl: {response.status_code} - {response.text}")
-        except requests.exceptions.RequestException as e:
-            print("Kunne ikke forbinde til serveren:", e)
-                
+    send_message()
