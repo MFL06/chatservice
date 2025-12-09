@@ -30,12 +30,8 @@ def opret_bruger():
 
 
 if __name__ == "__main__":
-    bruger = opret_bruger()
+    opret_bruger()
 
-    if bruger:
-        print("Bruger objekt gemt:")
-        print("Navn:", bruger.name)
-        print("Password:", bruger.password)
 
 
 
