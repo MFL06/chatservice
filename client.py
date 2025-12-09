@@ -87,3 +87,8 @@ while value == True:
             send_message()
         if keyboard.read_key() == 'r':
             recieve_message()
+        if keyboard.read_key() == 'esc':
+            value = False
+        
+    if keyboard.read_key() == 'esc':
+        value = False
