@@ -1,5 +1,4 @@
 import requests
-import keyboard
 
 API_URL = "http://10.74.68.175:8000"
 
@@ -80,20 +79,12 @@ def recieve_message():
 if user_name != False:
     send_message()
 
-while value == True:
-
+while True:
+    action = input("Tryk 'r' for at få beskeder \n Tryk 's' for at sende besked \n Tryk 'c' for at lukke programmet")
     if process == False:
-        while True:
-            if keyboard.read_key() == 's':
-                process == True
-                send_message()
-                break
-            if keyboard.read_key() == 'r':
-                recieve_message()
-                break
-            if keyboard.read_key() == 'esc':
-                value = False
-                break
-        
-    if keyboard.read_key() == 'esc':
-        value = False
+        if action == 'r':
+            recieve_message()
+        if action == 's':
+            send_message()
+        if action == 'c':
+            break
