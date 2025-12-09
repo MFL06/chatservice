@@ -16,6 +16,9 @@ class Bruger:
         self.password = password
 
 def opret_bruger():
+    response1 = requests.get(f"{API_URL}/con_check", 'skibidi')
+    if response1.status_code == 200:
+        print(response.text)
     print("=== Opret ny bruger ===")
     name = input("name: ")
     password = input("password: ")

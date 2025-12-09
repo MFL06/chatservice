@@ -17,6 +17,11 @@ class Users:
         self.password = password
 
 
+@app.get('/con_check')
+def check_con():
+    return 'connected'
+
+
 @app.post('/sign_up')
 async def createUser(user: dict):
     userList.append(Users(user["name"], user["password"]))
