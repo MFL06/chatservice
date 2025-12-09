@@ -81,14 +81,19 @@ if user_name != False:
     send_message()
 
 while value == True:
+
     if process == False:
-        if keyboard.read_key() == 's':
-            process == True
-            send_message()
-        if keyboard.read_key() == 'r':
-            recieve_message()
-        if keyboard.read_key() == 'esc':
-            value = False
+        while True:
+            if keyboard.read_key() == 's':
+                process == True
+                send_message()
+                break
+            if keyboard.read_key() == 'r':
+                recieve_message()
+                break
+            if keyboard.read_key() == 'esc':
+                value = False
+                break
         
     if keyboard.read_key() == 'esc':
         value = False
