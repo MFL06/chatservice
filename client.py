@@ -76,8 +76,7 @@ def recieve_message():
     global process
     process = False
 
-if user_name != False:
-    send_message()
+
 
 while True:
     action = input("Tryk 'r' for at få beskeder \n Tryk 's' for at sende besked \n Tryk 'c' for at lukke programmet")
