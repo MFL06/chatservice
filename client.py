@@ -1,9 +1,9 @@
 import requests
+import keyboard
 
 API_URL = "http://10.74.68.175:8000"
 
 
-import keyboard
 
 user_name = False
 
