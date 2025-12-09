@@ -2,8 +2,14 @@ import requests
 
 API_URL = "http://10.74.68.175:8000"
 
+
+import keyboard
+
 user_name = False
 
+value = True
+
+process = False
 
 class Bruger:
     def __init__(self, name, password):
@@ -51,6 +57,33 @@ def send_message():
             print(f"Fejl: {response.status_code} - {response.text}")
     except requests.exceptions.RequestException as e:
         print("Kunne ikke forbinde til serveren:", e)
+    global process
+    process = False
+
+
+
+
+
+
+def recieve_message():
+    sender = input("Who do you want to get message from? ")
+    reciever = user_name
+
+    response = requests.get(f"{API_URL}/recieve_message", json={f'sender': sender, 'reciever': reciever})
+    if response.status_code == 200:
+        print(response.text)
+    else:
+        print('Der opstod en fejl!')
+    global process
+    process = False
 
 if user_name != False:
     send_message()
+
+while value == True:
+    if process == False:
+        if keyboard.read_key() == 's':
+            process == True
+            send_message()
+        if keyboard.read_key() == 'r':
+            recieve_message()
