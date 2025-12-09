@@ -19,7 +19,7 @@ def opret_bruger():
     print("=== Opret ny bruger ===")
     name = input("name: ")
     password = input("password: ")
-    response = requests.post(f"{API_URL}/sign up", json={"name": name, "password": password})
+    response = requests.post(f"{API_URL}/sign_up", json={"name": name, "password": password})
     if response.status_code == 200:
         print("Bruger oprettet!", response.text)
         global user_name
