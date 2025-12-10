@@ -1,6 +1,6 @@
 import requests
 
-API_URL = "http://192.168.56.1:8000"
+API_URL = "http://10.74.68.152:8000"
 
 
 
