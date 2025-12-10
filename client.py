@@ -32,8 +32,8 @@ def opret_bruger():
         print(f"Fejl: {response.status_code} - {response.text}")
 
 
-if __name__ == "__main__":
-    opret_bruger()
+#if __name__ == "__main__":
+ #   opret_bruger()
 
 
 
