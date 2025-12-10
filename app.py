@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import scrolledtext, filedialog
-from client import sender,response1
+from client import response1
 
 
 # ----------- GUI SETUP -----------

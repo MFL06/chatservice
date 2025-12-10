@@ -75,7 +75,7 @@ def recieve_message():
 
 
 while True:
-    action = input("Tryk 'r' for at få beskeder \n Tryk 's' for at sende besked \n Tryk 'c' for at lukke programmet")
+    action = input("Tryk 'r' for at få beskeder \n Tryk 's' for at sende besked \n Tryk 'c' for at lukke programmet\n")
     if process == False:
         if action == 'r':
             recieve_message()
