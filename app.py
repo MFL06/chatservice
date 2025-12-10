@@ -1,30 +1,52 @@
 import tkinter as tk
+from tkinter import *
 from tkinter import scrolledtext, filedialog
+from client import sender,response1
+
 
 # ----------- GUI SETUP -----------
-root = tk.Tk()
-root.title("Chat Klient")
-root.geometry("600x500")
-root.configure(bg="#e6e6fa")
+root=tk.Tk()
+root.geometry("600x400")
 
-# Chatvisning
-chat_box = scrolledtext.ScrolledText(root, wrap=tk.WORD, bg="white", fg="black")
-chat_box.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
-chat_box.config(state=tk.NORMAL)
+def submit():
 
-# Indtastningsfelt + send-knapper
-msg_frame = tk.Frame(root, bg="#d8bfd8")
-msg_frame.pack(fill=tk.X, padx=10, pady=5)
-
-msg_entry = tk.Entry(msg_frame, font=("Arial", 12))
-msg_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 5))
-
-send_btn = tk.Button(msg_frame, text="Send", width=8, bg="#0078D7", fg="black",
-                     command=)
-send_btn.pack(side=tk.LEFT)
-
-connect_btn = tk.Button(root, text="🔌 Forbind til server", command=connect_to_server, bg="#e0e0e0")
-connect_btn.pack(pady=5)
-
-# Start GUI
+    name=name_var.get()
+    password=passw_var.get()
+    
+    print("The name is : " + name)
+    print("The password is : " + password)
+    
+    name_var.set("")
+    passw_var.set("")
+    
+    
+# creating a label for 
+# name using widget Label
+name_label = tk.Label(root, text = 'Username', font=('calibre',10, 'bold'))
+ 
+# creating a entry for input
+# name using widget Entry
+name_entry = tk.Entry(root,textvariable = name_var, font=('calibre',10,'normal'))
+ 
+# creating a label for password
+passw_label = tk.Label(root, text = 'Password', font = ('calibre',10,'bold'))
+ 
+# creating a entry for password
+passw_entry=tk.Entry(root, textvariable = passw_var, font = ('calibre',10,'normal'), show = '*')
+ 
+# creating a button using the widget 
+# Button that will call the submit function 
+sub_btn=tk.Button(root,text = 'Submit', command = submit)
+ 
+# placing the label and entry in
+# the required position using grid
+# method
+name_label.grid(row=0,column=0)
+name_entry.grid(row=0,column=1)
+passw_label.grid(row=1,column=0)
+passw_entry.grid(row=1,column=1)
+sub_btn.grid(row=2,column=1)
+ 
+# performing an infinite loop 
+# for the window to display
 root.mainloop()

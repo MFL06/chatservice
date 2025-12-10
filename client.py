@@ -18,7 +18,7 @@ class Bruger:
 def opret_bruger():
     response1 = requests.get(f"{API_URL}/con_check", 's')
     if response1.status_code == 200:
-        print(response.text)
+        print(response1.text)
     print("=== Opret ny bruger ===")
     name = input("name: ")
     password = input("password: ")
@@ -33,12 +33,7 @@ def opret_bruger():
 
 
 if __name__ == "__main__":
-    #opret_bruger()
-    response1 = requests.get(f"{API_URL}/con_check")
-    if response1.status_code == 200:
-        print(response1.text)
-    else:
-        print(response1.status_code)
+    opret_bruger()
 
 
 
@@ -79,12 +74,12 @@ def recieve_message():
 
 
 
-#while True:
- #   action = input("Tryk 'r' for at få beskeder \n Tryk 's' for at sende besked \n Tryk 'c' for at lukke programmet")
-  #  if process == False:
-   #     if action == 'r':
-    #        recieve_message()
-     #   if action == 's':
-      #      send_message()
-       # if action == 'c':
-        #    break
+while True:
+    action = input("Tryk 'r' for at få beskeder \n Tryk 's' for at sende besked \n Tryk 'c' for at lukke programmet")
+    if process == False:
+        if action == 'r':
+            recieve_message()
+        if action == 's':
+            send_message()
+        if action == 'c':
+            break
