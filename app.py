@@ -1,52 +1,55 @@
 import tkinter as tk
-from tkinter import *
-from tkinter import scrolledtext, filedialog
-from client import response1
+import requests
+
+API_URL = "http://10.74.68.152:8000"
+
+user_name = "" # starts empty until login or signup
+
+# ---------- FUNCTIONS ----------
+def send_message_gui():
+    sender = fra_var.get()
+    receiver = til_var.get()
+    message = message_var.get()
+
+    if not sender or not receiver or not message:
+        print("Please fill all fields.")
+        return
+
+    try:
+        response = requests.post(
+            f"{API_URL}/send_message",
+            json={
+                "message": message,
+                "reciever": receiver,
+                "sender": sender
+            }
+        )
+        if response.status_code == 200:
+            print("Message sent:", response.text)
+        else:
+            print("Error:", response.status_code, response.text)
+    except Exception as e:
+        print("Could not reach server:", e)
 
 
-# ----------- GUI SETUP -----------
-root=tk.Tk()
-root.geometry("600x400")
+# ---------- GUI ----------
+root = tk.Tk()
+root.geometry("600x300")
+root.title("Message Sender")
 
-def submit():
+fra_var = tk.StringVar()
+til_var = tk.StringVar()
+message_var = tk.StringVar()
 
-    name=name_var.get()
-    password=passw_var.get()
-    
-    print("The name is : " + name)
-    print("The password is : " + password)
-    
-    name_var.set("")
-    passw_var.set("")
-    
-    
-# creating a label for 
-# name using widget Label
-name_label = tk.Label(root, text = 'Username', font=('calibre',10, 'bold'))
- 
-# creating a entry for input
-# name using widget Entry
-name_entry = tk.Entry(root,textvariable = name_var, font=('calibre',10,'normal'))
- 
-# creating a label for password
-passw_label = tk.Label(root, text = 'Password', font = ('calibre',10,'bold'))
- 
-# creating a entry for password
-passw_entry=tk.Entry(root, textvariable = passw_var, font = ('calibre',10,'normal'), show = '*')
- 
-# creating a button using the widget 
-# Button that will call the submit function 
-sub_btn=tk.Button(root,text = 'Submit', command = submit)
- 
-# placing the label and entry in
-# the required position using grid
-# method
-name_label.grid(row=0,column=0)
-name_entry.grid(row=0,column=1)
-passw_label.grid(row=1,column=0)
-passw_entry.grid(row=1,column=1)
-sub_btn.grid(row=2,column=1)
- 
-# performing an infinite loop 
-# for the window to display
+tk.Label(root, text="From:", font=("Arial", 12)).grid(row=0, column=0, sticky="w", padx=5, pady=5)
+tk.Entry(root, textvariable=fra_var, width=25).grid(row=0, column=1, pady=5)
+
+tk.Label(root, text="To:", font=("Arial", 12)).grid(row=1, column=0, sticky="w", padx=5, pady=5)
+tk.Entry(root, textvariable=til_var, width=25).grid(row=1, column=1, pady=5)
+
+tk.Label(root, text="Message:", font=("Arial", 12)).grid(row=2, column=0, sticky="w", padx=5, pady=5)
+tk.Entry(root, textvariable=message_var, width=40).grid(row=2, column=1, pady=5)
+
+tk.Button(root, text="Send", command=send_message_gui, width=20).grid(row=3, column=1, pady=15)
+
 root.mainloop()
