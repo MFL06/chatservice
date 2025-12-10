@@ -16,7 +16,7 @@ class Bruger:
         self.password = password
 
 def opret_bruger():
-    response1 = requests.get(f"{API_URL}/con_check", 'skibidi')
+    response1 = requests.get(f"{API_URL}/con_check", 's')
     if response1.status_code == 200:
         print(response.text)
     print("=== Opret ny bruger ===")
@@ -33,7 +33,10 @@ def opret_bruger():
 
 
 if __name__ == "__main__":
-    opret_bruger()
+    #opret_bruger()
+    response1 = requests.get(f"{API_URL}/con_check", 's')
+    if response1.status_code == 200:
+        print(response1.text)
 
 
 
