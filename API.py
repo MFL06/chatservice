@@ -19,7 +19,7 @@ class Users:
 
 @app.get('/con_check')
 def check_con():
-    return 'connected'
+    return {'connection': "hej"}
 
 
 @app.post('/sign_up')

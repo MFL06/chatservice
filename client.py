@@ -34,9 +34,11 @@ def opret_bruger():
 
 if __name__ == "__main__":
     #opret_bruger()
-    response1 = requests.get(f"{API_URL}/con_check", 's')
+    response1 = requests.get(f"{API_URL}/con_check")
     if response1.status_code == 200:
         print(response1.text)
+    else:
+        print(response1.status_code)
 
 
 
