@@ -43,7 +43,7 @@ async def send_message(message: dict):
 
 @app.get('/recieve_message')
 async def recieve_message(dic: dict):
-    directory = pathlib.Path(f"{dic['sender']}_{dic['reciever']}")
+    directory = pathlib.Path(f"message_{dic['sender']}_{dic['reciever']}")
     with open(directory,'r') as file:
         data = json.load(file)
         return data
