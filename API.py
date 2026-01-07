@@ -37,7 +37,9 @@ async def save_userlist(user):
 @app.post('/send_message')
 async def send_message(message: dict):
     with open(f'message_{message['sender']}_{message['reciever']}','w') as file:
-        json.dump(message['message'], file)
+        f = json.load(file)
+        file.seek(0)
+        json.dump(message['message'],f, file)
         return 'Message sent successfully'
 
 
@@ -45,7 +47,7 @@ async def send_message(message: dict):
 async def recieve_message(dic: dict):
     directory = pathlib.Path(f"message_{dic['sender']}_{dic['reciever']}")
     with open(directory,'r') as file:
-        data = json.load(file)
+        data = json.load(file)[1]
         return data
     
 
